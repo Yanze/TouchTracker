@@ -1,15 +1,13 @@
 //
-//  ViewController.h
+//  Line.m
 //  TouchTracker
 //
 //  Created by yanze on 8/12/16.
 //  Copyright © 2016 yanzeliu. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "Line.h"
 
-@interface ViewController : UIViewController
-
+@implementation Line
 
 @end
-
