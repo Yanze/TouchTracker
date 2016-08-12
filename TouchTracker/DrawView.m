@@ -19,6 +19,7 @@
     return self;
 }
 
+// define the line
 - (void)strokeLine: (Line *)line {
     UIBezierPath *bp = [UIBezierPath bezierPath];
     bp.lineWidth = 10;
@@ -38,6 +39,33 @@
         [[UIColor redColor]set];
         [self strokeLine:self.currentLine];
     }
+}
+
+// create new line
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    UITouch *t = [touches anyObject];
+    // get location of the touch in the view's coordiantion system
+    CGPoint location = [t locationInView:self];
+    
+    self.currentLine = [[Line alloc]init];
+    self.currentLine.begin = location;
+    self.currentLine.end = location;
+    [self setNeedsDisplay];
+}
+
+// update the end of the currentLine
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    UITouch *t = [touches anyObject];
+    CGPoint location = [t locationInView: self];
+    self.currentLine.end = location;
+    [self setNeedsDisplay];
+}
+
+// add the currentLine to the finishedLines when the touch ends
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.finishedLines addObject:self.currentLine];
+    self.currentLine = nil;
+    [self setNeedsDisplay];
 }
 
 @end
