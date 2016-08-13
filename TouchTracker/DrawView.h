@@ -12,6 +12,5 @@
 
 @interface DrawView : UIView
 
-@property (nonatomic, strong) Line *currentLine;
-@property (nonatomic, strong) NSMutableArray *finishedLines;
+
 @end
